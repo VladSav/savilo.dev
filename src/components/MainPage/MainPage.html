@@ -1,0 +1,31 @@
+<div class="main-page">
+
+	<ScrollController></ScrollController>
+
+	<swiper class="main-swiper"
+			@swiper="setSwiper"
+			:offset="0"
+			:speed="700"
+			:mousewheel="true"
+			direction="vertical">
+        <swiper-slide class="main-swiper__slide"
+                      :class="'main-swiper__slide-heroImage'">
+				<HeroImage></HeroImage>
+		</swiper-slide>
+		
+		<swiper-slide class="main-swiper__slide"
+                      :class="'main-swiper__slide-heroImage'">
+			<AboutMe :currentMainSlide="mainSwiper && mainSwiper.activeIndex ? mainSwiper.activeIndex : 0"></AboutMe>
+		</swiper-slide>
+		
+		<swiper-slide class="main-swiper__slide"
+                      :class="'main-swiper__slide-heroImage'">
+			<Skills></Skills>
+		</swiper-slide>
+
+		<swiper-slide class="main-swiper__slide"
+                      :class="'main-swiper__slide-heroImage'">
+			<Contacts></Contacts>
+		</swiper-slide>
+    </swiper>	
+</div>

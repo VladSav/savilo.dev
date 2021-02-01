@@ -1,0 +1,15 @@
+@mixin golder-grid-row {
+	grid-template-rows: 1fr 1fr 2fr 4fr 2.66fr 5.33fr 5.33fr 4.33fr 2.83fr 3.5fr 3.5fr 2.83fr 4.33fr 5.33fr 5.33fr 2.66fr 4fr 2fr 1fr 1fr;
+}
+@mixin golder-grid-column {
+	grid-template-columns: 1fr 1fr 2fr 4fr 2.66fr 5.33fr 5.33fr 4.33fr 2.83fr 3.5fr 3.5fr 2.83fr 4.33fr 5.33fr 5.33fr 2.66fr 4fr 2fr 1fr 1fr;
+}
+
+@mixin position($position, $align, $justify) {
+	#{'.' + $position} {
+        grid-area: #{$position};
+        align-items: #{$align};
+        justify-content: #{$justify};
+        margin: 0;
+    }
+}

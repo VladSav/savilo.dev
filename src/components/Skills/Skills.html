@@ -1,0 +1,98 @@
+<div class="golden-grid skills-section">
+
+    <h2>Skills</h2>
+    <swiper class="skills-swiper" @swiper="setSwiper" :controller="{ control: skillsSwiper }" :slidesPerView="3" :space-between="30">
+        <swiper-slide v-for="(skill, index) of skills" 
+                      :key="'skills-slide-' + index" 
+                      class="skills-swiper__slide" 
+                      :class="'skills-swiper__slide-' + skill.title.toLowerCase()" 
+                      @click="openSelectedSkill()">
+            <h3>{{skill.title}}</h3>
+            <h4>
+                <span>{{skill.technologies.length}}+</span>
+            </h4>
+            <h5>skills</h5>
+        </swiper-slide>
+    </swiper>
+
+    <div v-if="currentSkill.title" class="golden-grid skills-content">
+
+        <div class="skills-content__info">
+
+            <swiper class="skills-content-swiper" 
+                    @swiper="setContentSwiper" 
+                    @slideChange="changeCurrentTech" 
+                    :controller="{ control: skillsContentSwiper }" 
+                    :slides-per-view="1"
+                    effect="fade">
+                <swiper-slide :key="'skills-content-slide-' + currentSkill.title.toLowerCase()" class="skills-content-swiper__slide" :class="'skills-content-swiper__slide-' + currentSkill.title.toLowerCase()">
+                    <p>{{currentSkill.description}}</p>
+                </swiper-slide>
+            </swiper>
+
+            <div class="skills-content-swiper__navigation">
+                <div class="icon" @click="changeSlidePrev()">
+                    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g opacity="0.3">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M17.562 13.9381C17.4227 13.7984 17.2571 13.6875 17.0749 13.6119C16.8927 13.5363 16.6973 13.4974 16.5 13.4974C16.3027 13.4974 16.1073 13.5363 15.9251 13.6119C15.7429 13.6875 15.5773 13.7984 15.438 13.9381L6.438 22.9381C6.29832 23.0774 6.18749 23.2429 6.11187 23.4252C6.03625 23.6074 5.99732 23.8028 5.99732 24.0001C5.99732 24.1974 6.03625 24.3927 6.11187 24.575C6.18749 24.7572 6.29832 24.9227 6.438 25.0621L15.438 34.0621C15.7197 34.3437 16.1017 34.5019 16.5 34.5019C16.8983 34.5019 17.2803 34.3437 17.562 34.0621C17.8437 33.7804 18.0019 33.3984 18.0019 33.0001C18.0019 32.6017 17.8437 32.2197 17.562 31.9381L9.621 24.0001L17.562 16.0621C17.7017 15.9227 17.8125 15.7572 17.8881 15.575C17.9638 15.3927 18.0027 15.1974 18.0027 15.0001C18.0027 14.8028 17.9638 14.6074 17.8881 14.4252C17.8125 14.2429 17.7017 14.0774 17.562 13.9381Z" fill="white" />
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M42 24C42 23.6022 41.842 23.2206 41.5607 22.9393C41.2794 22.658 40.8978 22.5 40.5 22.5H9C8.60218 22.5 8.22064 22.658 7.93934 22.9393C7.65804 23.2206 7.5 23.6022 7.5 24C7.5 24.3978 7.65804 24.7794 7.93934 25.0607C8.22064 25.342 8.60218 25.5 9 25.5H40.5C40.8978 25.5 41.2794 25.342 41.5607 25.0607C41.842 24.7794 42 24.3978 42 24Z" fill="white" />
+                        </g>
+                    </svg>
+                </div>
+
+                <div class="icon" @click="changeSlideNext()">
+                    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g opacity="0.3">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M30.438 34.0619C30.5773 34.2016 30.7429 34.3125 30.9251 34.3881C31.1073 34.4637 31.3027 34.5026 31.5 34.5026C31.6973 34.5026 31.8927 34.4637 32.0749 34.3881C32.2571 34.3125 32.4227 34.2016 32.562 34.0619L41.562 25.0619C41.7017 24.9226 41.8125 24.7571 41.8881 24.5748C41.9638 24.3926 42.0027 24.1972 42.0027 23.9999C42.0027 23.8026 41.9638 23.6073 41.8881 23.425C41.8125 23.2428 41.7017 23.0773 41.562 22.9379L32.562 13.9379C32.2803 13.6563 31.8983 13.4981 31.5 13.4981C31.1017 13.4981 30.7197 13.6563 30.438 13.9379C30.1563 14.2196 29.9981 14.6016 29.9981 14.9999C29.9981 15.3983 30.1563 15.7803 30.438 16.0619L38.379 23.9999L30.438 31.9379C30.2983 32.0773 30.1875 32.2428 30.1119 32.425C30.0362 32.6073 29.9973 32.8026 29.9973 32.9999C29.9973 33.1972 30.0362 33.3926 30.1119 33.5748C30.1875 33.7571 30.2983 33.9226 30.438 34.0619V34.0619Z" fill="white" />
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M6 24C6 24.3978 6.15804 24.7794 6.43934 25.0607C6.72064 25.342 7.10218 25.5 7.5 25.5L39 25.5C39.3978 25.5 39.7794 25.342 40.0607 25.0607C40.342 24.7794 40.5 24.3978 40.5 24C40.5 23.6022 40.342 23.2207 40.0607 22.9394C39.7794 22.6581 39.3978 22.5 39 22.5L7.5 22.5C7.10218 22.5 6.72065 22.658 6.43934 22.9394C6.15804 23.2207 6 23.6022 6 24Z" fill="white" />
+                        </g>
+                    </svg>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="skills-content__title" @click="resetSelect()">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g filter="url(#filter0_dd)">
+                    <path d="M30 12L18 24L30 36" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </g>
+                <defs>
+                    <filter id="filter0_dd" x="-10" y="-10" width="68" height="68" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                        <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+                        <feOffset dx="4" dy="4" />
+                        <feGaussianBlur stdDeviation="3" />
+                        <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 0.2 0 0 0 0 0.4 0 0 0 0.8 0" />
+                        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow" />
+                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+                        <feOffset dx="-4" dy="-4" />
+                        <feGaussianBlur stdDeviation="3" />
+                        <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 0.2 0 0 0 0 0.4 0 0 0 0.8 0" />
+                        <feBlend mode="normal" in2="effect1_dropShadow" result="effect2_dropShadow" />
+                        <feBlend mode="normal" in="SourceGraphic" in2="effect2_dropShadow" result="shape" />
+                    </filter>
+                </defs>
+            </svg>
+
+            <h3>{{currentSkill.title}}</h3>
+        </div>
+
+        <div class="skills-content__icons">
+
+            <div v-for="(tech, index) of currentSkill.technologies" 
+                 :key="'skills-tech-icon-' + tech.title + '-' + index" 
+                 class="skills-content__icons-tech" 
+                 :class="[{'active': selectedTech === index},  'pos' + (Number.isInteger(tech.position) ? (tech.position === 0 ? '0' : tech.position) : index) ]" 
+                 
+                 @mouseover="changeSlide(index)">
+                <div class="container">
+                    <h4 class="title">{{tech.title}}</h4>
+                    <div class="circle" :class="'size-' + tech.size"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>

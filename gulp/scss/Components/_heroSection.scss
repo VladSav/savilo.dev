@@ -1,0 +1,153 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.golden-grid {
+	height: 100vh;
+	width: 100vw;
+    max-width: 100%;
+	position: relative;
+	display: grid;
+	@include golder-grid-row;
+	@include golder-grid-column;
+}
+
+// End common
+
+.hero-section {
+	background-color: $blackDark;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+
+	* {
+		z-index: 2;
+	}
+
+	h1 {
+		font-family: $ubuntu;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 48px;
+		line-height: 58px;
+
+		text-transform: uppercase;
+
+		color: $white;
+		grid-area: 8 / 4 / span 4 / span 6;
+		text-align: left;
+		margin: 0;
+		padding: 0;
+	}
+
+	button {
+		font-family: $roboto;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 18px;
+		line-height: 21px;
+		cursor: pointer;
+		color: $white;
+
+		text-transform: uppercase;
+
+		grid-area: 13 / 4;
+		padding: 16px 48px;
+		white-space: nowrap;
+		background: $mainGradient;
+		border: none;
+		outline: unset;
+		border-radius: 40px;
+	}
+
+	.social {
+		grid-area: 17 / 4 / span 1 / span 7;
+		display: flex;
+		align-items: flex-end;
+
+		span {
+			font-family: $roboto;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 18px;
+			line-height: 24px;
+			color: $white;
+		}
+
+		ul {
+			list-style: none;
+			display: flex;
+
+			li {
+				display: flex;
+				margin: 0 0 0 16px;
+			}
+		}
+		
+	}
+
+	.resume {
+		grid-area: 17 / 15 / span 1 / span 3;
+		display: flex;
+		align-items: flex-end;
+		justify-content: flex-end;
+
+		* {
+			cursor: pointer;
+		}
+
+		span {
+			font-family: $roboto;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 18px;
+			line-height: 24px;
+			color: $white;
+			margin-left: 16px;
+		}
+	}
+
+	&__back-image {
+		grid-area: 1 / 1 / span 20 / span 20;
+		z-index: 1;
+
+		picture {
+			display: flex;
+			width: 100vw;
+			height: 100vh;
+			justify-content: center;
+		}
+	}
+
+	&__info {
+		z-index: 2;
+	}
+
+	&__download {
+		z-index: 2;
+	}
+
+	&__blur {
+		position: absolute;
+		top: 0;
+		right: 50%;
+		bottom: 0;
+		left: 0;
+		z-index: 1;
+		overflow: hidden;
+
+		&:before {
+			content: '';
+			display: block;
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			background: linear-gradient(90deg, rgba(91, 91, 91, 0.15) 0%, rgba(155, 155, 155, 0.15) 100%);
+			backdrop-filter: blur(15px);
+			z-index: -1;
+		}
+	}
+}

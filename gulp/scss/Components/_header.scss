@@ -1,0 +1,53 @@
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 200;
+    margin: 0;
+    padding: 24px 0;
+    display: grid;
+    @include golder-grid-column;
+
+    &__title {
+        grid-area: 1 / 4 / span 1 / span 5;
+        font-family: $ubuntu;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 24px;
+        text-transform: uppercase;
+
+        color: $white;
+        opacity: .2;
+        cursor: default;
+    }
+
+    &__navigation {
+        grid-area: 1 / 12 / span 1 / span 5;
+        display: flex;
+        align-items: center;
+
+        nav {
+            ul {
+                list-style: none;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                align-items: center;
+
+                li {
+                    font-family: $roboto;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 14px;
+                    color: $white;
+                    text-transform: uppercase;
+                    margin-right: 32px;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}

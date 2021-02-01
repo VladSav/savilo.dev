@@ -1,0 +1,186 @@
+.contacts-section {
+    background-color: $blackDark;
+
+    &__title {
+        grid-area: 5 / 6 / span 1 / span 10;
+
+        font-family: $ubuntu;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 48px;
+        line-height: 58px;
+
+        text-align: center;
+        text-transform: uppercase;
+
+        color: $white;
+    }
+
+    &__description {
+        grid-area: 6 / 6 / span 1 / span 10;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+
+        font-family: $roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 20px;
+        line-height: 30px;
+
+        text-align: center;
+
+        color: $white;
+    }
+
+    &__form {
+        grid-area: 8 / 6 / span 8 / span 5;
+
+        * {
+            color: $white;
+        }
+
+        fieldset {
+            border: none;
+            margin-bottom: 16px;
+
+            display: flex;
+            flex-direction: column;
+
+            label {
+                font-family: $roboto;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 18px;
+                line-height: 30px;
+
+                color: $white;
+
+                margin-bottom: 8px;
+            }
+
+            input, textarea {
+                min-height: 36px;
+                background-color: $greyDark;
+                border: none;
+
+                font-family: $roboto;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 18px;
+                line-height: 30px;
+
+                padding: 6px 12px;
+
+                &:focus {
+                    outline: none;
+                }
+            }
+
+            textarea {
+                min-height: 128px;
+                max-height: 30vh;
+                overflow-y: auto;
+                resize: vertical;
+
+                &::-webkit-scrollbar {
+                    width: 8px;
+                    border-radius: 10px;
+                    
+                }
+                
+                &::-webkit-scrollbar-track {
+                    background: $scrollBarTrack;
+                }
+                
+                &::-webkit-scrollbar-thumb {
+                    background: $scrollBarThumb;
+                    border-radius: 10px;
+                    width: 6px;
+                }
+                
+                &::-webkit-scrollbar-thumb:hover {
+                    background: $scrollBarThumbHover;
+                }
+
+                &::-webkit-scrollbar-corner {
+                    background-color: $scrollBarCorner;
+                }
+            }
+
+        }
+
+        &-send {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            align-items: center;
+            justify-content: space-between;
+
+            input {
+                flex: 1;
+            }
+
+            button {
+                font-family: $roboto;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 18px;
+                line-height: 21px;
+
+                text-transform: uppercase;
+
+                color: $white;
+                background: $mainGradient;
+                border-radius: 40px;
+
+                padding: 16px 48px;
+                margin-left: 32px;
+                border: none;
+                outline: none;
+            }
+        }
+    }
+
+    &__links {
+        grid-area: 8 / 13 / span 8 / span 3;
+
+        &-item {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            align-items: center;
+            margin-bottom: 16px;
+            
+            span, a {
+                font-family: $roboto;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 18px;
+                line-height: 30px;
+
+                color: $white;
+                text-decoration: none;
+            }
+
+            svg {
+                margin-right: 16px;
+            }
+        }
+
+        h3 {
+            font-family: $roboto;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 20px;
+            line-height: 30px;
+
+            text-transform: uppercase;
+            color: $white;
+
+            margin-top: 26px;
+            margin-bottom: 16px;
+        }
+    }
+
+}

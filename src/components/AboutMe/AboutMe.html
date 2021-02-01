@@ -1,0 +1,63 @@
+<section class="golden-grid about-section">
+	<h2>About Me</h2>
+
+	<div class="about-section__photo">
+		<picture>
+			<source srcset="/images/me-about-photo.webp" type="image/webp">
+			<img src="/images/me-about-photo.png" alt="my photo">
+		</picture>
+	</div>
+
+	<ul class="about-section__list">
+		<li v-for="(list, index) of listOptions" 
+			:key="'list-' + index" 
+			:class="{'active': selected === index}" 
+			@click="switchContent(index)"
+			@mouseover="switchContent(index)">
+			{{list.text}}
+		</li>
+	</ul>
+
+	<div class="about-section__content">
+		<div class="about-section__content-item about-section__content-biography" :class="{'active': selected === checkConentPosition('biography')}">
+			<p>I’ m dedicated and efficient full-stack developer with <mark>3+ years experience</mark> in web application and databases. I work hard to understand technical issues and to resolve them in an effective manner. I worked on many projects at the same time and was able to focus on each of them. I worked with many CMS: Wordpress, Bitrix, OpenCart, Joomla, MODX etc. I started to learn Vue.js during "petproject". Last year I work mostly with this framework. Now I’m seeking to further learning PHP and JS frameworks.
+			</p>
+		</div>
+		<div class="about-section__content-item about-section__content-education" :class="{'active': selected === checkConentPosition('education')}">
+			<div class="university">
+				<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<g clip-path="url(#clip0)">
+						<path d="M14 6.66667C14 11.3333 8 15.3333 8 15.3333C8 15.3333 2 11.3333 2 6.66667C2 5.07537 2.63214 3.54925 3.75736 2.42403C4.88258 1.29881 6.4087 0.666668 8 0.666668C9.5913 0.666668 11.1174 1.29881 12.2426 2.42403C13.3679 3.54925 14 5.07537 14 6.66667Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+						<path d="M8 8.66667C9.10457 8.66667 10 7.77124 10 6.66667C10 5.5621 9.10457 4.66667 8 4.66667C6.89543 4.66667 6 5.5621 6 6.66667C6 7.77124 6.89543 8.66667 8 8.66667Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+					</g>
+					<defs>
+						<clipPath id="clip0">
+							<rect width="16" height="16" fill="white" />
+						</clipPath>
+					</defs>
+				</svg>
+				<span>Belarusian State University</span>
+			</div>
+			<p class="dates">September 2012 – June 2017	</p>
+			<p>Mathematics (Science-Design Activity), Bachelor's degree</p>
+		</div>
+		<div class="about-section__content-item about-section__content-work" :class="{'active': selected === checkConentPosition('work')}">
+			<div class="work-item" v-for="(work, wIndex) of works" :key="'about-works-' + wIndex">
+				<p class="position">{{work.position}}</p>
+				<p class="dates">{{getWorkDates(work.dates)	}}</p>
+				<p class="company">{{work.company}}</p>
+				<ul class="responsibilities">
+					<li v-for="(res, rIndex) of work.responsibilities" :key="wIndex + '-' + rIndex">
+						{{res}}
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="about-section__content-item about-section__content-hobbies" :class="{'active': selected === checkConentPosition('hobbies')}">
+			<div class="hobby-item" v-for="hobby of hobbies">
+				<div class="hobby-item__icon" :class="hobby"></div>
+				<span class="hobby-item__title">{{hobby}}</span>
+			</div>
+		</div>
+	</div>
+</section>
