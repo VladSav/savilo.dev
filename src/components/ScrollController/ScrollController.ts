@@ -2,21 +2,31 @@ import { defineComponent } from 'vue'
 
 export default defineComponent({
 	name: 'ScrollController',
-    props: {},
+	props: {
+		currentPosition: {
+			default: {}
+		},
+		allSections: {
+			default: []
+		},
+	},
     emmits: {},
 	components: {},
 	data() {
-		return {
-            
-		}
+		return {}
 	},
+	// comtuted: {
+	// 	elements: {}
+	// }
 	// created() {
 		
 	// },
 	// mounted() {
 	
 	// },
-	// methods: {
-
-	// }
+	methods: {
+		clickSrollerLink(key) {
+            this.$emit('mainSlideChange', key)
+        },
+	}
 })

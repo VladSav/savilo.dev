@@ -49,36 +49,43 @@ export default defineComponent({
                         {
                             title: "JavaScript",
                             size: 3,
+                            image: "/images/logo_36_javascript",
                             position: 0,
                         },
                         {
                             title: "Vue",
                             size: 3,
+                            image: "/images/logo_36_vue",
                             position: 1,
                         },
                         {
                             title: "TypeScript",
                             size: 2,
+                            image: "/images/logo_36_typescript",
                             position: 2,
                         },
                         {
                             title: "HTML",
                             size: 1,
+                            image: "/images/logo_36_html5",
                             position: 3,
                         },
                         {
                             title: "CSS",
                             size: 1,
+                            image: "/images/logo_36_css3",
                             position: 4,
                         },
                         {
                             title: "SCSS",
                             size: 2,
+                            image: "/images/logo_36_sass",
                             position: 5,
                         },
                         {
                             title: "Bootstrap",
                             size: 2,
+                            image: "/images/logo_36_bootstrap",
                             position: 6,
                         },
 
@@ -91,31 +98,37 @@ export default defineComponent({
                         {
                             title: "NodeJS",
                             size: 3,
+                            image: "/images/logo_36_nodejs",
                             position: 3,
                         },
                         {
                             title: "Python",
                             size: 1,
+                            image: "/images/logo_36_python",
                             position: 1,
                         },
                         {
                             title: "PHP",
                             size: 1,
+                            image: "/images/logo_36_php",
                             position: 2,
                         },
                         {
                             title: "PostgreSQL",
                             size: 2,
+                            image: "/images/logo_36_postgresql",
                             position: 0,
                         },
                         {
                             title: "SSE",
                             size: 2,
+                            image: "/images/logo_36_sse",
                             position: 4,
                         },
                         {
                             title: "Postman",
                             size: 1,
+                            image: "/images/logo_36_postman",
                             position: 5,
                         },
                     ]
@@ -133,7 +146,11 @@ export default defineComponent({
                             size: 1,
                         },
                         {
-                            title: "Gulp / Webpack",
+                            title: "Gulp",
+                            size: 1,
+                        },
+                        {
+                            title: "Webpack",
                             size: 1,
                         },
                         {

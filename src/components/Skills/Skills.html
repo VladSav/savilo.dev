@@ -1,19 +1,22 @@
 <div class="golden-grid skills-section">
 
     <h2>Skills</h2>
-    <swiper class="skills-swiper" @swiper="setSwiper" :controller="{ control: skillsSwiper }" :slidesPerView="3" :space-between="30">
-        <swiper-slide v-for="(skill, index) of skills" 
-                      :key="'skills-slide-' + index" 
-                      class="skills-swiper__slide" 
-                      :class="'skills-swiper__slide-' + skill.title.toLowerCase()" 
-                      @click="openSelectedSkill()">
-            <h3>{{skill.title}}</h3>
-            <h4>
-                <span>{{skill.technologies.length}}+</span>
-            </h4>
-            <h5>skills</h5>
-        </swiper-slide>
-    </swiper>
+
+    <div class="skills-section__main-swiper">
+        <swiper class="skills-swiper" @swiper="setSwiper" :controller="{ control: skillsSwiper }" :slidesPerView="3" :space-between="30">
+            <swiper-slide v-for="(skill, index) of skills" 
+                        :key="'skills-slide-' + index" 
+                        class="skills-swiper__slide" 
+                        :class="'skills-swiper__slide-' + skill.title.toLowerCase()" 
+                        @click="openSelectedSkill()">
+                <h3>{{skill.title}}</h3>
+                <h4>
+                    <span>{{skill.technologies.length}}+</span>
+                </h4>
+                <h5>skills</h5>
+            </swiper-slide>
+        </swiper>
+    </div>
 
     <div v-if="currentSkill.title" class="golden-grid skills-content">
 
@@ -54,24 +57,12 @@
 
         <div class="skills-content__title" @click="resetSelect()">
             <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g filter="url(#filter0_dd)">
-                    <path d="M30 12L18 24L30 36" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                </g>
+                <path d="M30 12L18 24L30 36" stroke="url(#paint0_linear)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 <defs>
-                    <filter id="filter0_dd" x="-10" y="-10" width="68" height="68" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                        <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
-                        <feOffset dx="4" dy="4" />
-                        <feGaussianBlur stdDeviation="3" />
-                        <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 0.2 0 0 0 0 0.4 0 0 0 0.8 0" />
-                        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow" />
-                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
-                        <feOffset dx="-4" dy="-4" />
-                        <feGaussianBlur stdDeviation="3" />
-                        <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 0.2 0 0 0 0 0.4 0 0 0 0.8 0" />
-                        <feBlend mode="normal" in2="effect1_dropShadow" result="effect2_dropShadow" />
-                        <feBlend mode="normal" in="SourceGraphic" in2="effect2_dropShadow" result="shape" />
-                    </filter>
+                <linearGradient id="paint0_linear" x1="23.8909" y1="12" x2="23.8909" y2="36" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#FFAB1D"/>
+                <stop offset="1" stop-color="#F8501C"/>
+                </linearGradient>
                 </defs>
             </svg>
 
@@ -88,7 +79,12 @@
                  @mouseover="changeSlide(index)">
                 <div class="container">
                     <h4 class="title">{{tech.title}}</h4>
-                    <div class="circle" :class="'size-' + tech.size"></div>
+                    <div class="circle" :class="'size-' + tech.size">
+                        <picture v-if="tech.image">
+                            <source type="image/webp" :srcset="tech.image + '.webp'">
+                            <img :src="tech.image + '.png'" :alt="tech.title" loading="lazy">
+                        </picture>
+                    </div>
                 </div>
             </div>
 

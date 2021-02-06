@@ -3,10 +3,7 @@
     <div class="header__navigation">
         <nav>
             <ul>
-                <li>About me</li>
-                <li>Skills</li>
-                <li>My projects</li>
-                <li>Contacts</li>
+                <li v-for="link of headerLinks" @click="clickHeaderLink(link.key)">{{link.text}}</li>
             </ul>
         </nav>
     </div>

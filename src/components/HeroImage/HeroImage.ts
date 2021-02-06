@@ -1,8 +1,14 @@
+import { defineComponent } from 'vue'
+
 import Header from '../Header.vue'
 
-export default {
+export default defineComponent({
 	name: 'HeroImage',
-	props: {},
+	props: {
+		headerLinks: {
+			default: []
+		},
+	},
 	components: {Header},
 	data() {
 		return {}
@@ -16,6 +22,9 @@ export default {
 					behavior: "smooth"
 				})
 			}
+		},
+		sendToMainPage(key) {
+			this.$emit('mainSlideChange', key)
 		}
 	}
-}
+})

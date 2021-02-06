@@ -1,2 +1,6 @@
 <div class="scroll-controller">
+    <div v-for="item of allSections" 
+        class="scroll-controller__item" 
+        :class="{'active': item.key == currentPosition.key}"
+        @click="clickSrollerLink(item.key)"></div>
 </div>

@@ -21,11 +21,50 @@ export default defineComponent({
 		return {
 			// eslint-disable-next-line
 			mainSwiper: null as any,
+			sections: [
+                {
+                    text: 'About me',
+                    key: 'about'
+                },
+                {
+                    text: 'Skills',
+                    key: 'skills'
+                },
+                {
+                    text: 'My projects',
+                    key: 'projects'
+                },
+                {
+                    text: 'Contacts',
+                    key: 'contacts'
+                },
+			] as Array<object>,
+			currentSlide: 0 as number,
+		}
+	},
+	computed: {
+		currentPosition() {
+			const a: object = Object.assign(
+				this.sections[this.currentSlide], 
+				{
+					index: this.currentSlide
+				}
+			)
+
+			return a
 		}
 	},
 	methods: {
 		setSwiper(swiper) {
             this.mainSwiper = swiper;
 		},
+		changeSlide(key) {
+			this.mainSwiper.slideTo(
+				this.sections.findIndex(item => item['key'] == key)
+			)
+		},
+		onSlideChange() {
+			this.currentSlide = this.mainSwiper.activeIndex
+		}
 	}
 })
