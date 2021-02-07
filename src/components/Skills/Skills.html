@@ -13,9 +13,8 @@
             <swiper-slide v-for="(skill, index) of skills" 
                         :key="'skills-slide-' + index" 
                         class="skills-swiper__slide" 
-                        :class="'skills-swiper__slide-' + skill.title.toLowerCase()" 
                         @click="openSelectedSkill()">
-                <div class="skills-swiper__slide-content">
+                <div class="skills-swiper__slide-content" :class="'skills-swiper__slide-content-' + skill.title.toLowerCase()">
                     <h3>{{skill.title}}</h3>
                     <h4>
                         <span>{{skill.technologies.length}}+</span>
