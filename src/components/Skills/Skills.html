@@ -3,17 +3,25 @@
     <h2>Skills</h2>
 
     <div class="skills-section__main-swiper">
-        <swiper class="skills-swiper" @swiper="setSwiper" :controller="{ control: skillsSwiper }" :slidesPerView="3" :space-between="30">
+        <swiper 
+            class="skills-swiper" 
+            @swiper="setSwiper" 
+            :controller="{ control: skillsSwiper }" 
+            :slides-per-view="skillsSwiperOptions.slidesPerView" 
+            :space-between="skillsSwiperOptions.spaceBetween"
+            :breakpoints="skillsSwiperOptions.breakpoints">
             <swiper-slide v-for="(skill, index) of skills" 
                         :key="'skills-slide-' + index" 
                         class="skills-swiper__slide" 
                         :class="'skills-swiper__slide-' + skill.title.toLowerCase()" 
                         @click="openSelectedSkill()">
-                <h3>{{skill.title}}</h3>
-                <h4>
-                    <span>{{skill.technologies.length}}+</span>
-                </h4>
-                <h5>skills</h5>
+                <div class="skills-swiper__slide-content">
+                    <h3>{{skill.title}}</h3>
+                    <h4>
+                        <span>{{skill.technologies.length}}+</span>
+                    </h4>
+                    <h5>skills</h5>
+                </div>
             </swiper-slide>
         </swiper>
     </div>

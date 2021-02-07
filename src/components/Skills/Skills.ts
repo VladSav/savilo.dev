@@ -11,6 +11,7 @@ interface SkillContentData {
     
     // eslint-disable-next-line
     skillsSwiper: any;
+    skillsSwiperOptions: SliderOtions;
     // eslint-disable-next-line
     skillsContentSwiper: any;
     skills: Skill[];
@@ -29,6 +30,12 @@ interface Technology {
     position?: number;
 }
 
+interface SliderOtions {
+    slidesPerView?: number;
+    spaceBetween?: number;
+    breakpoints?: object;
+}
+
 SwiperCore.use([Controller]);
 
 export default defineComponent({
@@ -40,6 +47,21 @@ export default defineComponent({
             selectedSkill: -1,
             selectedTech: -1,
             skillsSwiper: null,
+            skillsSwiperOptions: {
+                slidesPerView: 1,
+                spaceBetween: 30,
+                breakpoints: {
+                    // 320: {
+                    //     slidesPerView: 1,
+                    // },
+                    800: {
+                        slidesPerView: 2,
+                    },
+                    1050: {
+                        slidesPerView: 3,
+                    }
+                },
+            },
             skillsContentSwiper: null,
             skills: [
                 {
