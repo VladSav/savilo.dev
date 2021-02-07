@@ -23,8 +23,8 @@ export default defineComponent({
 			mainSwiper: null as any,
 			sections: [
 				{
-                    text: 'Hello',
-                    key: 'Hello'
+                    text: 'Hero Image',
+                    key: 'hero'
                 },
                 {
                     text: 'About me',
@@ -65,6 +65,9 @@ export default defineComponent({
 		},
 		onSlideChange() {
 			this.currentSlide = this.mainSwiper.activeIndex
+		},
+		getMenuItems() {
+			return this.sections.filter(item => item['key'] != 'hero')
 		}
 	}
 })
