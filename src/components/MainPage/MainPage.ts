@@ -22,6 +22,10 @@ export default defineComponent({
 			// eslint-disable-next-line
 			mainSwiper: null as any,
 			sections: [
+				{
+                    text: 'Hello',
+                    key: 'Hello'
+                },
                 {
                     text: 'About me',
                     key: 'about'
@@ -29,10 +33,6 @@ export default defineComponent({
                 {
                     text: 'Skills',
                     key: 'skills'
-                },
-                {
-                    text: 'My projects',
-                    key: 'projects'
                 },
                 {
                     text: 'Contacts',
