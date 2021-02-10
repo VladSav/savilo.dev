@@ -51,9 +51,6 @@ export default defineComponent({
                 slidesPerView: 1,
                 spaceBetween: 30,
                 breakpoints: {
-                    // 320: {
-                    //     slidesPerView: 1,
-                    // },
                     800: {
                         slidesPerView: 2,
                     },
@@ -162,34 +159,41 @@ export default defineComponent({
                         {
                             title: "GIT",
                             size: 3,
+                            image: "/images/logo_36_git",
                         },
                         {
                             title: "NPM",
-                            size: 1,
+                            size: 2,
+                            image: "/images/logo_36_npm",
                         },
                         {
                             title: "Gulp",
-                            size: 1,
+                            size: 2,
+                            image: "/images/logo_36_gulp",
                         },
                         {
                             title: "Webpack",
-                            size: 1,
+                            size: 2,
+                            image: "/images/logo_36_webpack",
                         },
                         {
                             title: "Jest",
-                            size: 2,
+                            size: 3,
                         },
                         {
                             title: "SEO",
-                            size: 2,
+                            size: 1,
+                            image: "/images/logo_36_seo",
                         },
                         {
                             title: "CMS",
                             size: 1,
+                            image: "/images/logo_36_cms",
                         },
                         {
                             title: "Photoshop",
-                            size: 1,
+                            size: 2,
+                            image: "/images/logo_36_photoshop",
                         },
                     ]
                 },
