@@ -8,10 +8,10 @@
 
 	<swiper class="main-swiper"
 			@swiper="setSwiper"
-			:offset="0"
-			:speed="700"
-			:mousewheel="true"
-			direction="vertical"
+			:offset="mainSwiperOptions.offset"
+			:speed="mainSwiperOptions.speed"
+			:mousewheel="mainSwiperOptions.mousewheel"
+			:direction="mainSwiperOptions.direction"
 			@slideChange="onSlideChange">
         <swiper-slide class="main-swiper__slide"
                       :class="'main-swiper__slide-heroImage'">

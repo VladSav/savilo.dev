@@ -21,6 +21,12 @@ export default defineComponent({
 		return {
 			// eslint-disable-next-line
 			mainSwiper: null as any,
+			mainSwiperOptions: {
+				offset: 0,
+				speed: 700,
+				mousewheel: true,
+				direction: 'vertical',
+			} as object,
 			sections: [
 				{
                     text: 'Hero Image',
