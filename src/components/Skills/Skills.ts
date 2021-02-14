@@ -25,9 +25,10 @@ interface Skill {
 
 interface Technology {
     title: string;
-    description: string;
-    size: number;
+    description?: string;
+    size?: number;
     position?: number;
+    image?: string;
 }
 
 interface SliderOtions {
@@ -179,6 +180,7 @@ export default defineComponent({
                         {
                             title: "Jest",
                             size: 3,
+                            image: "/images/logo_36_jest",
                         },
                         {
                             title: "SEO",
