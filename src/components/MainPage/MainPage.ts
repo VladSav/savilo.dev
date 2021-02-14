@@ -46,19 +46,27 @@ export default defineComponent({
                 },
 			] as Array<object>,
 			currentSlide: 0 as number,
+			windowWidth: 0 as number,
 		}
+	},
+	created() {
+		this.windowWidth = window.innerWidth
+		window.addEventListener('resize', this.handleResize)
 	},
 	computed: {
 		currentPosition() {
-			const a: object = Object.assign(
+			const position: object = Object.assign(
 				this.sections[this.currentSlide], 
 				{
 					index: this.currentSlide
 				}
 			)
-
-			return a
-		}
+			return position
+		},
+		isMobile() {
+			const isMobile: any = this.windowWidth <= 767
+			return isMobile
+		},
 	},
 	methods: {
 		setSwiper(swiper) {
@@ -74,6 +82,12 @@ export default defineComponent({
 		},
 		getMenuItems() {
 			return this.sections.filter(item => item['key'] != 'hero')
-		}
-	}
+		},
+		handleResize() {
+			this.windowWidth = window.innerWidth
+		},
+	},
+	unmounted() {
+		window.removeEventListener('resize', this.handleResize)
+	},
 })

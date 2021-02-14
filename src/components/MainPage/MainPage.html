@@ -1,36 +1,47 @@
 <div class="main-page">
 
-	<ScrollController 
-		:currentPosition="currentPosition"
-		:allSections="sections"
-		@mainSlideChange="changeSlide"
-	></ScrollController>
+	<template v-if="isMobile">
+		<HeroImage @mainSlideChange="changeSlide" :headerLinks="getMenuItems()"></HeroImage>
 
-	<swiper class="main-swiper"
-			@swiper="setSwiper"
-			:offset="mainSwiperOptions.offset"
-			:speed="mainSwiperOptions.speed"
-			:mousewheel="mainSwiperOptions.mousewheel"
-			:direction="mainSwiperOptions.direction"
-			@slideChange="onSlideChange">
-        <swiper-slide class="main-swiper__slide"
-                      :class="'main-swiper__slide-heroImage'">
-				<HeroImage @mainSlideChange="changeSlide" :headerLinks="getMenuItems()"></HeroImage>
-		</swiper-slide>
-		
-		<swiper-slide class="main-swiper__slide"
-                      :class="'main-swiper__slide-heroImage'">
-			<AboutMe :currentMainSlide="mainSwiper && mainSwiper.activeIndex ? mainSwiper.activeIndex : 0"></AboutMe>
-		</swiper-slide>
-		
-		<swiper-slide class="main-swiper__slide"
-                      :class="'main-swiper__slide-heroImage'">
-			<Skills></Skills>
-		</swiper-slide>
+		<AboutMe :currentMainSlide="mainSwiper && mainSwiper.activeIndex ? mainSwiper.activeIndex : 0"></AboutMe>
 
-		<swiper-slide class="main-swiper__slide"
-                      :class="'main-swiper__slide-heroImage'">
-			<Contacts></Contacts>
-		</swiper-slide>
-    </swiper>
+		<Skills></Skills>
+
+		<Contacts></Contacts>
+	</template>
+	<template v-else>
+		<ScrollController 
+			:currentPosition="currentPosition"
+			:allSections="sections"
+			@mainSlideChange="changeSlide"
+		></ScrollController>
+
+		<swiper class="main-swiper"
+				@swiper="setSwiper"
+				:offset="mainSwiperOptions.offset"
+				:speed="mainSwiperOptions.speed"
+				:mousewheel="mainSwiperOptions.mousewheel"
+				:direction="mainSwiperOptions.direction"
+				@slideChange="onSlideChange">
+			<swiper-slide class="main-swiper__slide"
+						:class="'main-swiper__slide-heroImage'">
+					<HeroImage @mainSlideChange="changeSlide" :headerLinks="getMenuItems()"></HeroImage>
+			</swiper-slide>
+			
+			<swiper-slide class="main-swiper__slide"
+						:class="'main-swiper__slide-heroImage'">
+				<AboutMe :currentMainSlide="mainSwiper && mainSwiper.activeIndex ? mainSwiper.activeIndex : 0"></AboutMe>
+			</swiper-slide>
+			
+			<swiper-slide class="main-swiper__slide"
+						:class="'main-swiper__slide-heroImage'">
+				<Skills></Skills>
+			</swiper-slide>
+
+			<swiper-slide class="main-swiper__slide"
+						:class="'main-swiper__slide-heroImage'">
+				<Contacts></Contacts>
+			</swiper-slide>
+		</swiper>
+	</template>
 </div>
