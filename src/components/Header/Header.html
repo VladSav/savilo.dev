@@ -1,9 +1,24 @@
 <div class="header">
-    <div class="header__title">Vlad Savilo</div>
-    <div class="header__navigation">
+    <div class="header__top" :class="{'mobile': isMobile, 'hide': isTopHidden}">
+        <div class="header__top-title">Vlad Savilo</div>
+        <div class="header__top-navigation">
+            <div v-if="isMobile" @click="isMobileMenuOpen = !isMobileMenuOpen" class="header__navigation-icon">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M3.19997 6.40002C2.91707 6.40002 2.64576 6.51241 2.44572 6.71244C2.24568 6.91248 2.1333 7.18379 2.1333 7.46669C2.1333 7.74959 2.24568 8.0209 2.44572 8.22094C2.64576 8.42098 2.91707 8.53336 3.19997 8.53336H28.8C29.0829 8.53336 29.3542 8.42098 29.5542 8.22094C29.7543 8.0209 29.8666 7.74959 29.8666 7.46669C29.8666 7.18379 29.7543 6.91248 29.5542 6.71244C29.3542 6.51241 29.0829 6.40002 28.8 6.40002H3.19997ZM2.1333 16C2.1333 15.7171 2.24568 15.4458 2.44572 15.2458C2.64576 15.0457 2.91707 14.9334 3.19997 14.9334H28.8C29.0829 14.9334 29.3542 15.0457 29.5542 15.2458C29.7543 15.4458 29.8666 15.7171 29.8666 16C29.8666 16.2829 29.7543 16.5542 29.5542 16.7543C29.3542 16.9543 29.0829 17.0667 28.8 17.0667H3.19997C2.91707 17.0667 2.64576 16.9543 2.44572 16.7543C2.24568 16.5542 2.1333 16.2829 2.1333 16ZM2.1333 24.5334C2.1333 24.2505 2.24568 23.9791 2.44572 23.7791C2.64576 23.5791 2.91707 23.4667 3.19997 23.4667H28.8C29.0829 23.4667 29.3542 23.5791 29.5542 23.7791C29.7543 23.9791 29.8666 24.2505 29.8666 24.5334C29.8666 24.8163 29.7543 25.0876 29.5542 25.2876C29.3542 25.4876 29.0829 25.6 28.8 25.6H3.19997C2.91707 25.6 2.64576 25.4876 2.44572 25.2876C2.24568 25.0876 2.1333 24.8163 2.1333 24.5334Z" fill="white"/>
+                </svg>
+            </div>
+            <nav v-else>
+                <ul>
+                    <li v-for="link of headerLinks" @click="scrollTo(link.key)">{{link.text}}</li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="header__mobile-menu" :class="{'open': isMobileMenuOpen}">
         <nav>
             <ul>
-                <li v-for="link of headerLinks" @click="clickHeaderLink(link.key)">{{link.text}}</li>
+                <li v-for="link of headerLinks" @click="scrollTo(link.key)">{{link.text}}</li>
             </ul>
         </nav>
     </div>

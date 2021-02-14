@@ -1,62 +1,136 @@
 .header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
     width: 100%;
-    z-index: 200;
-    margin: 0;
-    padding: 24px 0;
-    display: grid;
-    @include golder-grid-column;
+    overflow: hidden;
 
-    &__title {
-        grid-area: 1 / 4 / span 1 / span 5;
-        font-family: $ubuntu;
-        font-style: normal;
-        font-weight: bold;
-        font-size: 24px;
-        line-height: 24px;
-        text-transform: uppercase;
+    &__top {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        z-index: 200;
+        margin: 0;
+        padding: 24px 0;
+        display: grid;
+        @include golder-grid-column;
 
-        color: $white;
-        opacity: .2;
-        cursor: default;
+        transform: translateY(0);
+        transition: transform .3s .4s ease-in-out;
+
+        &.hide {
+            transform: translateY(-100%);
+            transition: transform .3s 0s ease-in-out;
+        }
+
+        &-title {
+            grid-area: 1 / 4 / span 1 / span 5;
+            font-family: $ubuntu;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 24px;
+            line-height: 24px;
+            text-transform: uppercase;
+
+            color: $white;
+            opacity: .2;
+            cursor: default;
+        }
+
+        &-navigation {
+            grid-area: 1 / 13 / span 1 / span 6;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+
+            nav {
+                ul {
+                    list-style: none;
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: nowrap;
+                    align-items: center;
+
+                    li {
+                        font-family: $roboto;
+                        font-style: normal;
+                        font-weight: normal;
+                        font-size: 14px;
+                        color: $white;
+                        text-transform: uppercase;
+                        margin-right: 32px;
+                        cursor: pointer;
+
+                        &:last-child {
+                            margin-right: 0;
+                        }
+                    }
+                }
+            }
+
+            &-icon {
+                cursor: pointer;
+            }
+        }
+
+        &.mobile {
+            .header__top-title {
+                grid-area: 1 / 4 / span 1 / span 10;
+                display: flex;
+                align-items: center;
+            }
+
+            .header__top-navigation {
+                grid-area: 1 / 15 / span 1 / span 4;
+            }
+        }
     }
 
-    &__navigation {
-        grid-area: 1 / 13 / span 1 / span 6;
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
+    &__mobile-menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: $blackDark;
+        z-index: 5;
+        padding-top: 33%;
+
+        transform: translateX(100%);
+        transition: transform .3s ease-in-out;
+
+        @media (max-width: 620px) {
+            & {
+                padding-top: 40%;
+            }
+        }
+
+        &.open {
+            transform: translateX(0);
+        }
 
         nav {
+            display: grid;
+            @include golder-grid-column;
+
             ul {
+                grid-area: 1 / 4 / span 1 / span 14;
                 list-style: none;
-                display: flex;
-                flex-direction: row;
-                flex-wrap: nowrap;
-                align-items: center;
 
                 li {
                     font-family: $roboto;
                     font-style: normal;
                     font-weight: normal;
-                    font-size: 14px;
+                    font-size: 24px;
+                    line-height: 1;
                     color: $white;
+                    text-align: center;
                     text-transform: uppercase;
-                    margin-right: 32px;
                     cursor: pointer;
+                    margin-bottom: 32px;
 
                     &:last-child {
-                        margin-right: 0;
+                        margin-bottom: 0;
                     }
-                }
-            }
-
-            @media (max-width: 767px) {
-                & {
-                    display: none;
                 }
             }
         }

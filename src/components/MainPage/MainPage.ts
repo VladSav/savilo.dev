@@ -1,6 +1,6 @@
 import { defineComponent } from 'vue'
 
-
+import Header from '../Header.vue'
 import HeroImage from '../HeroImage.vue'
 import AboutMe from '../AboutMe.vue'
 import Skills from '../Skills.vue'
@@ -16,7 +16,7 @@ SwiperCore.use([Controller, Mousewheel])
 export default defineComponent({
 	name: 'MainPage',
     props: {},
-	components: {HeroImage, AboutMe, Skills, Contacts, ScrollController, Swiper, SwiperSlide},
+	components: {Header, HeroImage, AboutMe, Skills, Contacts, ScrollController, Swiper, SwiperSlide},
 	data() {
 		return {
 			// eslint-disable-next-line

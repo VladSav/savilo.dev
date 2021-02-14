@@ -1,7 +1,14 @@
 <div class="main-page">
 
+	<Header 
+		:headerLinks="getMenuItems()" 
+		:isMobile="isMobile" 
+		:currentPosition="currentPosition"
+		@mainSlideChange="changeSlide"
+	></Header>
+
 	<template v-if="isMobile">
-		<HeroImage @mainSlideChange="changeSlide" :headerLinks="getMenuItems()"></HeroImage>
+		<HeroImage @mainSlideChange="changeSlide"></HeroImage>
 
 		<AboutMe :currentMainSlide="mainSwiper && mainSwiper.activeIndex ? mainSwiper.activeIndex : 0"></AboutMe>
 

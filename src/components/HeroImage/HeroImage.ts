@@ -5,9 +5,9 @@ import Header from '../Header.vue'
 export default defineComponent({
 	name: 'HeroImage',
 	props: {
-		headerLinks: {
-			default: []
-		},
+		// headerLinks: {
+		// 	default: []
+		// },
 	},
 	components: {Header},
 	data() {
