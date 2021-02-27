@@ -1,6 +1,10 @@
 @import 
+    '../../node_modules/swiper/swiper-bundle',
+
     './Abstract/vars',
     './Abstract/mixins',
+
+    './Plugins/swiper',
 
     './Common/reset',
     

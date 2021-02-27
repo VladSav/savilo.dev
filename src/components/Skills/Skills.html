@@ -9,6 +9,7 @@
             :controller="{ control: skillsSwiper }" 
             :slides-per-view="skillsSwiperOptions.slidesPerView" 
             :space-between="skillsSwiperOptions.spaceBetween"
+            :pagination="skillsSwiperOptions.pagination"
             :breakpoints="skillsSwiperOptions.breakpoints">
             <swiper-slide v-for="(skill, index) of skills" 
                         :key="'skills-slide-' + index" 
