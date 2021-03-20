@@ -15,7 +15,7 @@
 			:currentMainSlide="mainSwiper && mainSwiper.activeIndex ? mainSwiper.activeIndex : 0"
 		></AboutMe>
 
-		<Skills></Skills>
+		<Skills :isMobile="isMobile"></Skills>
 
 		<Contacts></Contacts>
 	</template>
@@ -45,7 +45,7 @@
 			
 			<swiper-slide class="main-swiper__slide"
 						:class="'main-swiper__slide-heroImage'">
-				<Skills></Skills>
+				<Skills :isMobile="isMobile"></Skills>
 			</swiper-slide>
 
 			<swiper-slide class="main-swiper__slide"

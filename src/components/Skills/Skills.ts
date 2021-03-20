@@ -1,7 +1,7 @@
 import { defineComponent } from 'vue'
 
 // Import Swiper Vue.js components
-import SwiperCore, { Controller } from 'swiper';
+import SwiperCore, { Controller, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 
 
@@ -35,13 +35,19 @@ interface SliderOtions {
     slidesPerView?: number;
     spaceBetween?: number;
     breakpoints?: object;
+    pagination?: object | boolean;
 }
 
-SwiperCore.use([Controller]);
+SwiperCore.use([Controller, Pagination]);
 
 export default defineComponent({
     name: 'Skills',
-    props: {},
+    props: {
+        isMobile: {
+            type: Boolean,
+            default: false
+        }
+    },
     components: { Swiper, SwiperSlide },
     data() {
         return {
@@ -59,6 +65,7 @@ export default defineComponent({
                         slidesPerView: 3,
                     }
                 },
+                pagination: this.isMobile ? { clickable: true } : false
             },
             skillsContentSwiper: null,
             skills: [
