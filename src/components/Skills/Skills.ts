@@ -58,10 +58,10 @@ export default defineComponent({
                 slidesPerView: 1,
                 spaceBetween: 30,
                 breakpoints: {
-                    800: {
+                    768: {
                         slidesPerView: 2,
                     },
-                    1050: {
+                    1100: {
                         slidesPerView: 3,
                     }
                 },
@@ -207,7 +207,6 @@ export default defineComponent({
                     ]
                 },
             ],
-
         } as SkillContentData
     },
     computed: {

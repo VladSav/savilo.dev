@@ -30,10 +30,10 @@
 
         <div class="skills-content__info">
 
-            <swiper class="skills-content-swiper" 
-                    @swiper="setContentSwiper" 
-                    @slideChange="changeCurrentTech" 
-                    :controller="{ control: skillsContentSwiper }" 
+            <swiper class="skills-content-swiper"
+                    @swiper="setContentSwiper"
+                    @slideChange="changeCurrentTech"
+                    :controller="{ control: skillsContentSwiper }"
                     :slides-per-view="1"
                     effect="fade">
                 <swiper-slide :key="'skills-content-slide-' + currentSkill.title.toLowerCase()" class="skills-content-swiper__slide" :class="'skills-content-swiper__slide-' + currentSkill.title.toLowerCase()">
@@ -41,7 +41,7 @@
                 </swiper-slide>
             </swiper>
 
-            <div class="skills-content-swiper__navigation">
+            <!-- <div class="skills-content-swiper__navigation">
                 <div class="icon" @click="changeSlidePrev()">
                     <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g opacity="0.3">
@@ -59,7 +59,7 @@
                         </g>
                     </svg>
                 </div>
-            </div>
+            </div> -->
 
         </div>
 
@@ -79,11 +79,10 @@
 
         <div class="skills-content__icons">
 
-            <div v-for="(tech, index) of currentSkill.technologies" 
-                 :key="'skills-tech-icon-' + tech.title + '-' + index" 
-                 class="skills-content__icons-tech" 
-                 :class="[{'active': selectedTech === index},  'pos' + (Number.isInteger(tech.position) ? (tech.position === 0 ? '0' : tech.position) : index) ]" 
-                 
+            <div v-for="(tech, index) of currentSkill.technologies"
+                 :key="'skills-tech-icon-' + tech.title + '-' + index"
+                 class="skills-content__icons-tech"
+                 :class="[{'active': selectedTech === index},  'pos' + (Number.isInteger(tech.position) ? (tech.position === 0 ? '0' : tech.position) : index) ]"
                  @mouseover="changeSlide(index)">
                 <div class="container">
                     <h4 class="title">{{tech.title}}</h4>
