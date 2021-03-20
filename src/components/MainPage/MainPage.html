@@ -10,7 +10,10 @@
 	<template v-if="isMobile">
 		<HeroImage @mainSlideChange="changeSlide"></HeroImage>
 
-		<AboutMe :currentMainSlide="mainSwiper && mainSwiper.activeIndex ? mainSwiper.activeIndex : 0"></AboutMe>
+		<AboutMe 
+			:isMobile="isMobile" 
+			:currentMainSlide="mainSwiper && mainSwiper.activeIndex ? mainSwiper.activeIndex : 0"
+		></AboutMe>
 
 		<Skills></Skills>
 

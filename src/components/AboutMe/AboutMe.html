@@ -1,57 +1,126 @@
-<section class="golden-grid about-section">
+<section class="about-section" :class="{'mobile': isMobile, 'golden-grid': isMobile == false}">
 	<h2>About Me</h2>
 
-	<div class="about-section__photo">
-		<picture>
-			<source srcset="/images/me-about-photo.webp" type="image/webp">
-			<img src="/images/me-about-photo.png" alt="my photo">
-		</picture>
-	</div>
+	
 
-	<ul class="about-section__list">
-		<li v-for="(list, index) of listOptions" 
-			:key="'list-' + index" 
-			:class="{'active': selected === index}" 
-			@click="switchContent(index)"
-			@mouseover="switchContent(index)">
-			{{list.text}}
-		</li>
-	</ul>
+	<template v-if="isMobile">
 
-	<div class="about-section__content">
-		<div class="about-section__content-item about-section__content-biography" :class="{'active': selected === checkConentPosition('biography')}">
-			<p>I'm a responsible, hardworking and friendly full-stack developer with <mark>3+ years of experience.</mark> I'm good at creating context user interfaces, adaptive websites, website optimization. I know different web languages and technologies but my primary ones are JavaScript, Vue.js and Node.JS. Also, I have experience in PHP, Python, Postgresql, MySQL and different CMS (Wordpress, Bitrix, OpenCart, Joomla, etc.). I love to learn and constantly improve my skills. I'm looking for an interesting project with a great team and a nice working climate.</p>
-		</div>
+		<div class="about-section__content">
 
-		<div class="about-section__content-item about-section__content-education" :class="{'active': selected === checkConentPosition('education')}">
-			<div class="university">
-				<object type="image/svg+xml" data="/icons/location.svg" width="16" height="16">
-					<img src="/icons/location.svg">
-				</object>
-				<span>Belarusian State University</span>
+			<div class="about-section__content-item">
+				<h3>Biography</h3>
+				<div class="about-section__content-item-biography">
+					<p>I'm a responsible, hardworking and friendly full-stack developer with <mark>3+ years of experience.</mark> I'm good at creating context user interfaces, adaptive websites, website optimization. I know different web languages and technologies but my primary ones are JavaScript, Vue.js and Node.JS. Also, I have experience in PHP, Python, Postgresql, MySQL and different CMS (Wordpress, Bitrix, OpenCart, Joomla, etc.). I love to learn and constantly improve my skills. I'm looking for an interesting project with a great team and a nice working climate.</p>
+				</div>
 			</div>
-			<p class="dates">September 2012 – June 2017	</p>
-			<p>Mathematics (Science-Design Activity), Bachelor's degree</p>
+	
+			<div class="about-section__content-item">
+				<h3>Education</h3>
+				<div class="about-section__content-item-education">
+					<div class="university">
+						<object type="image/svg+xml" data="/icons/location.svg" width="16" height="16">
+							<img src="/icons/location.svg">
+						</object>
+						<span>Belarusian State University</span>
+					</div>
+					<p class="dates">September 2012 – June 2017	</p>
+					<p>Mathematics (Science-Design Activity), Bachelor's degree</p>
+				</div>
+			</div>
+	
+			<div class="about-section__content-item">
+				<h3>Work</h3>
+				<div class="about-section__content-item-work">
+					<div class="work-item" v-for="(work, wIndex) of works" :key="'about-works-' + wIndex">
+						<p class="position">{{work.position}}</p>
+						<p class="dates">{{getWorkDates(work.dates)	}}</p>
+						<p class="company">{{work.company}}</p>
+						<ul class="responsibilities">
+							<li v-for="(res, rIndex) of work.responsibilities" :key="wIndex + '-' + rIndex">
+								{{res}}
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+	
+			<div class="about-section__content-item">
+				<h3>Hobbies</h3>
+				<div class="about-section__content-item-hobbies">
+					<div class="hobby-item" v-for="hobby of hobbies">
+						<div class="hobby-item__icon" :class="hobby"></div>
+						<span class="hobby-item__title">{{hobby}}</span>
+					</div>
+				</div>
+			</div>
+
 		</div>
 
-		<div class="about-section__content-item about-section__content-work" :class="{'active': selected === checkConentPosition('work')}">
-			<div class="work-item" v-for="(work, wIndex) of works" :key="'about-works-' + wIndex">
-				<p class="position">{{work.position}}</p>
-				<p class="dates">{{getWorkDates(work.dates)	}}</p>
-				<p class="company">{{work.company}}</p>
-				<ul class="responsibilities">
-					<li v-for="(res, rIndex) of work.responsibilities" :key="wIndex + '-' + rIndex">
-						{{res}}
-					</li>
-				</ul>
-			</div>
+	</template>
+	<template v-else>
+
+		<div class="about-section__photo">
+			<picture>
+				<source srcset="/images/me-about-photo.webp" type="image/webp">
+				<img src="/images/me-about-photo.png" alt="my photo">
+			</picture>
 		</div>
 
-		<div class="about-section__content-item about-section__content-hobbies" :class="{'active': selected === checkConentPosition('hobbies')}">
-			<div class="hobby-item" v-for="hobby of hobbies">
-				<div class="hobby-item__icon" :class="hobby"></div>
-				<span class="hobby-item__title">{{hobby}}</span>
+		<ul class="about-section__list">
+			<li v-for="(list, index) of listOptions" 
+				:key="'list-' + index" 
+				:class="{'active': selected === index}" 
+				@click="switchContent(index)"
+				@mouseover="switchContent(index)">
+				{{list.text}}
+			</li>
+		</ul>
+	
+		<div class="about-section__content">
+			<div class="about-section__content-item" :class="{'active': selected === checkConentPosition('biography')}">
+				<div class="about-section__content-item-biography">
+					<p>I'm a responsible, hardworking and friendly full-stack developer with <mark>3+ years of experience.</mark> I'm good at creating context user interfaces, adaptive websites, website optimization. I know different web languages and technologies but my primary ones are JavaScript, Vue.js and Node.JS. Also, I have experience in PHP, Python, Postgresql, MySQL and different CMS (Wordpress, Bitrix, OpenCart, Joomla, etc.). I love to learn and constantly improve my skills. I'm looking for an interesting project with a great team and a nice working climate.</p>
+				</div>
+			</div>
+	
+			<div class="about-section__content-item" :class="{'active': selected === checkConentPosition('education')}">
+				<div class="about-section__content-item-education">
+					<div class="university">
+						<object type="image/svg+xml" data="/icons/location.svg" width="16" height="16">
+							<img src="/icons/location.svg">
+						</object>
+						<span>Belarusian State University</span>
+					</div>
+					<p class="dates">September 2012 – June 2017	</p>
+					<p>Mathematics (Science-Design Activity), Bachelor's degree</p>
+				</div>
+			</div>
+	
+			<div class="about-section__content-item" :class="{'active': selected === checkConentPosition('work')}">
+				<div class="about-section__content-item-work">
+					<div class="work-item" v-for="(work, wIndex) of works" :key="'about-works-' + wIndex">
+						<p class="position">{{work.position}}</p>
+						<p class="dates">{{getWorkDates(work.dates)	}}</p>
+						<p class="company">{{work.company}}</p>
+						<ul class="responsibilities">
+							<li v-for="(res, rIndex) of work.responsibilities" :key="wIndex + '-' + rIndex">
+								{{res}}
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+	
+			<div class="about-section__content-item" :class="{'active': selected === checkConentPosition('hobbies')}">
+				<div class="about-section__content-item-hobbies">
+					<div class="hobby-item" v-for="hobby of hobbies">
+						<div class="hobby-item__icon" :class="hobby"></div>
+						<span class="hobby-item__title">{{hobby}}</span>
+					</div>
+				</div>
 			</div>
 		</div>
-	</div>
+	</template>
+
+	
 </section>

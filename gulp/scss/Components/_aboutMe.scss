@@ -97,6 +97,10 @@
 				flex-direction: column;
 			}
 
+			ul {
+				list-style: inside;
+			}
+
 			mark {
 				color: $grey;
 				background-color: unset;
@@ -111,62 +115,119 @@
 			.dates {
 				color: $grey;
 			}
-		}
 
-		&-hobbies {
-			&.active {
+			&-hobbies {
+				display: flex;
 				flex-direction: row;
 				flex-wrap: wrap;
+	
+				.hobby-item {
+					display: flex;
+					flex-direction: column;
+					align-items: center;
+					flex: 1 1 33%;
+					margin-bottom: 30px;
+
+					@media (min-width: 800px) and (max-width: 1100px) {
+						& {
+							flex: 1 1 50%;
+						}
+					}
+	
+					&__title {
+						font-family: $roboto;
+						font-style: normal;
+						font-weight: normal;
+						font-size: 18px;
+						line-height: 30px;
+						text-align: center;
+	
+						color: $white;
+						margin-top: 16px;
+					}
+	
+					&__icon {
+						display: flex;
+						width: 64px;
+						height: 64px;
+	
+						&.music {
+							background-image: url("/icons/music.svg");
+							background-size: cover;
+						}
+						&.tableGames {
+							background-image: url("/icons/table_games.svg");
+							background-size: cover;
+						}
+						&.traveling {
+							background-image: url("/icons/traveling.svg");
+							background-size: cover;
+						}
+						&.videoGames {
+							background-image: url("/icons/video_games.svg");
+							background-size: cover;
+						}
+						&.tennis {
+							background-image: url("/icons/tennis.svg");
+							background-size: cover;
+						}
+						&.movies {
+							background-image: url("/icons/movies.svg");
+							background-size: cover;
+						}
+					}
+				}
 			}
 
-			.hobby-item {
+		}
+
+		
+	}
+
+	&.mobile {
+
+		padding: 100px 60px;
+
+		@media (max-width: 500px) {
+			& {
+				padding-left: 40px;
+				padding-right: 40px;
+			}
+		}
+
+		h2 {
+			text-align: center;
+			padding: 30px 0 50px;
+		}
+
+		.about-section__content {
+
+			&-item {
 				display: flex;
 				flex-direction: column;
-				align-items: center;
-				flex: 1 1 33%;
-				margin-bottom: 30px;
+				margin-bottom: 40px;
 
-				&__title {
-					font-family: $roboto;
-					font-style: normal;
-					font-weight: normal;
-					font-size: 18px;
-					line-height: 30px;
-					text-align: center;
-
-					color: $white;
-					margin-top: 16px;
+				&:last-child {
+					margin-bottom: 0;
 				}
 
-				&__icon {
-					display: flex;
-					width: 64px;
-					height: 64px;
+				h3 {
+					display: inline-flex;
+					align-self: flex-start;
+					margin: 16px 0 24px;
+					font-size: 30px;
+					background: $mainGradient;
+					-webkit-background-clip: text;
+					-webkit-text-fill-color: transparent;
+					color: $white;
+				}
+				
+			}
 
-					&.music {
-						background-image: url("/icons/music.svg");
-						background-size: cover;
-					}
-					&.tableGames {
-						background-image: url("/icons/table_games.svg");
-						background-size: cover;
-					}
-					&.traveling {
-						background-image: url("/icons/traveling.svg");
-						background-size: cover;
-					}
-					&.videoGames {
-						background-image: url("/icons/video_games.svg");
-						background-size: cover;
-					}
-					&.tennis {
-						background-image: url("/icons/tennis.svg");
-						background-size: cover;
-					}
-					&.movies {
-						background-image: url("/icons/movies.svg");
-						background-size: cover;
-					}
+			.about-section__content-item {
+
+				&.about-section__content-hobbies {
+					
 				}
 			}
 		}

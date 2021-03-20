@@ -13,6 +13,10 @@ export default defineComponent({
 			type: Number,
 			default: 0,
 		},
+		isMobile: {
+			type: Boolean,
+			default: false,
+		}
 	},
 	components: {Swiper, SwiperSlide},
 	data() {
