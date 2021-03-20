@@ -32,7 +32,7 @@
             text-transform: uppercase;
 
             color: $white;
-            opacity: .2;
+            opacity: .4;
             cursor: default;
         }
 
@@ -73,6 +73,8 @@
         }
 
         &.mobile {
+            background: $blackDark;
+
             .header__top-title {
                 grid-area: 1 / 4 / span 1 / span 10;
                 display: flex;

@@ -18,7 +18,7 @@
     <div class="header__mobile-menu" :class="{'open': isMobileMenuOpen}">
         <nav>
             <ul>
-                <li v-for="link of headerLinks" @click="scrollTo(link.key)">{{link.text}}</li>
+                <li v-for="link of headerLinks" @click="scrollToMobile(link.key)">{{link.text}}</li>
             </ul>
         </nav>
     </div>

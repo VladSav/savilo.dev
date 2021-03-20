@@ -32,12 +32,22 @@ export default defineComponent({
                 }
             }
             return false
-
         },
     },
     methods: {
-        scrollTo(key) {
+        scrollTo(key: string) {
 			this.$emit('mainSlideChange', key)
-		}
+		},
+        scrollToMobile(key: string) {
+            this.isMobileMenuOpen = false
+            const scrollPosition = document.querySelector(`.${key}-section`)
+			if (scrollPosition) {
+				window.scrollTo({
+					top: scrollPosition['offsetTop'],
+					behavior: "smooth"
+				})
+			}
+            // return true
+        }
     }
 })
